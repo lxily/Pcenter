@@ -1,5 +1,7 @@
 ﻿#include "GRASP.h"
 
+Rander rander;
+
 PCenterSolver::PCenterSolver(vector<vector<int>> g, int p) {
 	vNum = (int)g.size();
 	pNum = p;
@@ -393,7 +395,7 @@ int PCenterSolver::searchOneStep(int nowStep) {
 	}
 
 	upDateHistoryOptimal();						//记录历史最优
-	tabuTable.updateTabuTable(addPoint, removePoint, nowStep); //更新禁忌表
+	tabuTable.updateTabuTable(addPoint, removePoint, nowStep, rander); //更新禁忌表
 
 	return sc;
 }
@@ -691,7 +693,7 @@ Solution PathRellinking::GRASP(vector<vector<int>>_graph, int pNum, unsigned _ra
 					optFound = Sr.minMaximum;
 				}
 				if (optFound <= opt) {
-					cout << "Path Rellinking Crossover.\n";
+					cout << "Answers from path-rellinking crossover.\n";
 				}
 
 			}
@@ -700,7 +702,7 @@ Solution PathRellinking::GRASP(vector<vector<int>>_graph, int pNum, unsigned _ra
 			P.push_back(St);
 			optFound = min(optFound, St.minMaximum);
 			if (optFound <= opt) {
-				cout << "Local Search.\n";
+				cout << "Answers from local search.\n";
 			}
 		}
 
