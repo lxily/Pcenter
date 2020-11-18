@@ -3,3 +3,8 @@
 ################################################################################
 
 /GRASP/Debug
+/GRASP/x64/Release
+/.vs
+/GRASP/GRASP.vcxproj.user
+/GRASP/GRASP.vcxproj.filters
+/GRASP/GRASP.vcxproj
