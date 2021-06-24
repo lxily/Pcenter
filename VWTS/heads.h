@@ -25,7 +25,7 @@ enum {
 	NoDecreaseLimit = 1000,
 
 	/*禁忌表*/
-	DoubleTabu = false,	//双禁忌效果更好
+	DoubleTabu = true,	//双禁忌效果更好
 };
 
 struct Rander {

@@ -17,16 +17,22 @@ VWTSSolution VWTS::VWTSSolver(const vector<vector<int>> &graph, int pNum, unsign
 	radius.erase(unique(radius.begin(), radius.end()), radius.end());
 
 	int idx = lower_bound(radius.begin(), radius.end(), bestResult) - radius.begin();
-	int low = max(0, idx - 5);
-	for (int i = low; i < radius.size(); ++i) {
+	int low = max(0, idx);
+	for (int i = low + 50; i >= low; --i) {
 		SetCovering SetCoveringSolver = SetCovering(graph, pNum, radius[i]);
-		VWTSSolution sol = SetCoveringSolver.solve(10000, randomSeed);
-		//db3(i, radius[i], sol.UXSize);
+		VWTSSolution sol = SetCoveringSolver.solve(200000, randomSeed);
+		db3(i, radius[i], sol.UXSize);
 		if (sol.UXSize == 0) {
-			ret = sol; break;
+			ret = sol; ret.radiu = calculationResult(graph, ret);
+			if (ret.radiu <= bestResult) break;
 		}
+		/*else if (sol.UXSize == 1) {
+			int nc = SetCoveringSolver.UX.values[0];
+			printf("No Covered Point: %d\n", nc);
+			printf("CSet: "); for (auto p : SetCoveringSolver.CSet[nc])printf("%d ", p); printf("\n");
+		}*/
 	}
-	ret.radiu = calculationResult(graph, ret);
+	//ret.radiu = calculationResult(graph, ret);
 
 	//二分半径
 	//int l = 0, r = (int)radius.size() - 1;

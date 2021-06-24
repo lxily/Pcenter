@@ -240,7 +240,7 @@ VWTSSolution SetCovering::solve(int maxTabuSearchSteps, unsigned randomSeed){
 		}
 		if (UX.size() >= preUnCovered) {
 			for (auto p : UX.values) {
-				addTheUXNodeWeight(p, 1);
+				addTheUXNodeWeight(p, 10);
 			}
 		}
 		tabuTable.updateTabuTable(addPoint,removePoint,step,rander);

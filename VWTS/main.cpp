@@ -13,8 +13,8 @@ vector<vector<int>>graph = {
 
 int main() {
 	int nodeNum=5, centerNum=2, bestResult=inf;
-	char instRoad[128]; int test_data = 1;
-	for (int tp = 0; tp < min((int)instPmed.size(), test_data); ++tp) {
+	char instRoad[128]; int test_data = 5;
+	for (int tp = 4; tp < min((int)instPmed.size(), test_data); ++tp) {
 		for (int i = 0; i < instPmed[tp].size(); ++i) {
 			string inst = "../Instance/" + instPmed[tp][i] + ".txt";
 			int randomSeed = unsigned(rand()*rand()*rand());
@@ -23,6 +23,7 @@ int main() {
 			strcpy(instRoad, inst.c_str());
 			freopen(instRoad, "r", stdin);
 			scanf("%d %d %d", &nodeNum, &centerNum, &bestResult);
+			bestResult = baselines[instPmed[tp][i]];
 			//db3(nodeNum, centerNum, bestResult);
 			graph.resize(nodeNum);
 			for (int x = 0; x < nodeNum; ++x) {
